@@ -1,5 +1,8 @@
 import Icons from "./components/Icons";
 import Title from "./components/Title";
+import Form from "./components/Form";
+import PackingList from "./components/PackingList";
+import Stats from "./components/Stats";
 import "./Css/app.css";
 
 export default function App() {
@@ -11,6 +14,9 @@ export default function App() {
       >
         <Icons />
         <Title />
+        <Form />
+        <PackingList />
+        <Stats />
       </div>
     </div>
   );
