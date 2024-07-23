@@ -1,4 +1,4 @@
-const Title = () => {
+export default function Title() {
   return (
     <div
       className="uppercase flex justify-center h-24 text-5xl items-center font-bold"
@@ -11,6 +11,4 @@ const Title = () => {
       packing list
     </div>
   );
-};
-
-export default Title;
+}

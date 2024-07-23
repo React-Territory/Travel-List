@@ -1,6 +1,22 @@
-function Form() {
+import { useState } from "react";
+
+export default function Form({ onAddItems }) {
+  const [descreption, setDescreption] = useState("");
+  const [quantity, setQuantity] = useState(1);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // guard clause
+    if (!descreption) return;
+
+    const newItem = { descreption, quantity, packed: false, id: Date.now() };
+    console.log(newItem);
+
+    onAddItems(newItem);
+
+    setDescreption("");
+    setQuantity(1);
   };
 
   return (
@@ -13,7 +29,12 @@ function Form() {
         What do you need for your trip? 👜{" "}
       </h3>
 
-      <select className="rounded" style={{ outline: "none" }}>
+      <select
+        onChange={(e) => setQuantity(Number(e.target.value))}
+        value={quantity}
+        className="rounded"
+        style={{ outline: "none" }}
+      >
         {Array.from({ length: 20 }, (_, index) => index + 1).map((num) => (
           <option value={num} key={num}>
             {num}
@@ -25,6 +46,8 @@ function Form() {
         style={{ outline: "none" }}
         type="text"
         placeholder="Item..."
+        value={descreption}
+        onChange={(e) => setDescreption(e.target.value)}
       />
       <button
         className="p-2 rounded font-semibold"
@@ -35,5 +58,3 @@ function Form() {
     </form>
   );
 }
-
-export default Form;
